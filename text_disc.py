@@ -60,20 +60,18 @@ async def on_ready():
         now = datetime.now()
         notif_check = str(now.hour) + str(now.minute)
         
-        if now.hour in round_one_times:
+        if now.hour in round_one_times and now.minute == 0:
             time.sleep(60)
             await round_one_action()
-            time.sleep(60*60)
-        if now.hour in round_two_times:
+        if now.hour in round_two_times and now.minute == 0:
             time.sleep(60)
             await round_two_action()
-            time.sleep(60*60)
         if notif_check in round_one_notif_times:
             await round_one_notif()
-            time.sleep(60*30)
+            time.sleep(60)
         if notif_check in round_two_notif_times:
             await round_two_notif()
-            time.sleep(60*30)
+            time.sleep(60)
         await asyncio.sleep(1)
 
 
