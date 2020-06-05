@@ -9,9 +9,7 @@ target_channel = 718235792547250276
 client = discord.Client()
 
 round_one_times = [3, 11, 19]
-round_one_notif_times = ['230', '1030', '1830']
 round_two_times = [4, 15, 23]
-round_two_notif_times = ['330', '1430', '2230']
 
 
 async def round_one_action():
@@ -58,22 +56,22 @@ async def round_two_notif():
 async def on_ready():
     while True:
         now = datetime.now()
-        notif_check = str(now.hour) + str(now.minute)
         
         if now.hour in round_one_times and now.minute == 0:
-            time.sleep(60)
+            time.sleep(25)
             await round_one_action()
         if now.hour in round_two_times and now.minute == 0:
-            time.sleep(60)
+            time.sleep(25)
             await round_two_action()
-        if notif_check in round_one_notif_times:
-            await round_one_notif()
-            time.sleep(60)
-        if notif_check in round_two_notif_times:
-            await round_two_notif()
-            time.sleep(60)
-        await asyncio.sleep(1)
 
+        if now.hour+1 in round_one_times and now.minute == 30:
+            round_one_notif()
+            time.sleep(65)
+        if now.hour+1 in round_two_times and now.minute == 30:
+            round_two_notif()
+            time.sleep(65)
+       
+        await asyncio.sleep(1)
 
 client.run(token)
 
