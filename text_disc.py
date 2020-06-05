@@ -61,17 +61,21 @@ async def on_ready():
             time.sleep(25)
             await round_one_action()
             time.sleep(65)
+            continue
         if now.hour in round_two_times and now.minute == 0:
             time.sleep(25)
             await round_two_action()
             time.sleep(65)
+            continue
 
         if now.hour+1 in round_one_times and now.minute == 30:
             await round_one_notif()
             time.sleep(65)
+            continue
         if now.hour+1 in round_two_times and now.minute == 30:
             await round_two_notif()
             time.sleep(65)
+            continue
        
         await asyncio.sleep(1)
 
