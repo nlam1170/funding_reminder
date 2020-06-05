@@ -4,7 +4,7 @@ import asyncio
 import time
 from datetime import datetime
 
-token = r"NzE4MjI3NDQyODc5MTY4NTQz.Xtl0Ag.pnVa0BTTEI7isG1CIuV9NHsoyqg"
+token = r"NzE4MjI3NDQyODc5MTY4NTQz.XtmpNA.RxlUDJfdy7CW5duQBN9y9LA1lic"
 target_channel = 718235792547250276
 client = discord.Client()
 
