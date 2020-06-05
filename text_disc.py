@@ -4,7 +4,7 @@ import asyncio
 import time
 from datetime import datetime
 
-token = r"NzE4MjI3NDQyODc5MTY4NTQz.XtmqMw.aKyciNl1-bcAxYOQvlh5i4VtupY"
+token = r"NzE4MjI3NDQyODc5MTY4NTQz.XtmsZQ.MjlW2tCgbKTDySJwstRdrIeKB-M"
 target_channel = 718235792547250276
 client = discord.Client()
 
@@ -63,14 +63,19 @@ async def on_ready():
         if now.hour in round_one_times:
             time.sleep(60)
             await round_one_action()
+            time.sleep(60*60)
         if now.hour in round_two_times:
             time.sleep(60)
             await round_two_action()
+            time.sleep(60*60)
         if notif_check in round_one_notif_times:
             await round_one_notif()
+            time.sleep(60*30)
         if notif_check in round_two_notif_times:
             await round_two_notif()
+            time.sleep(60*30)
         await asyncio.sleep(1)
+
 
 client.run(token)
 
