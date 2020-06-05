@@ -70,6 +70,7 @@ async def on_ready():
             await round_one_notif()
         if notif_check in round_two_notif_times:
             await round_two_notif()
+        await asyncio.sleep(1)
 
 client.run(token)
 
