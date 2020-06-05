@@ -5,17 +5,17 @@ import time
 from datetime import datetime
 
 token = r"NzE4MjI3NDQyODc5MTY4NTQz.XtmsZQ.MjlW2tCgbKTDySJwstRdrIeKB-M"
-target_channel = 718235792547250276
+target_channel = 718555773789011979
 client = discord.Client()
 
 round_one_times = [3, 11, 19]
-round_two_times = [4, 15, 23]
+round_two_times = [7, 15, 23]
 
 
 async def round_one_action():
     channel = client.get_channel(target_channel)
     info = funding.round_one()
-    await channel.send("@everyone" + "Funding paid for Okex/Binance/Bybit")
+    await channel.send("@everyone " + "Funding paid for Okex/Binance/Bybit")
     msg = r"```"
     for index in info:
         msg += index + ": " + str(info[index]) + "\n"
@@ -25,7 +25,7 @@ async def round_one_action():
 async def round_one_notif():
     channel = client.get_channel(target_channel)
     info = funding.round_one()
-    await channel.send("@everyone" + "30 mins till Okex/Binance/Bybit")
+    await channel.send("@everyone " + "30 mins till Okex/Binance/Bybit")
     msg = r"```"
     for index in info:
         msg += index + ": " + str(info[index]) + "\n"
@@ -60,15 +60,17 @@ async def on_ready():
         if now.hour in round_one_times and now.minute == 0:
             time.sleep(25)
             await round_one_action()
+            time.sleep(65)
         if now.hour in round_two_times and now.minute == 0:
             time.sleep(25)
             await round_two_action()
+            time.sleep(65)
 
         if now.hour+1 in round_one_times and now.minute == 30:
-            round_one_notif()
+            await round_one_notif()
             time.sleep(65)
         if now.hour+1 in round_two_times and now.minute == 30:
-            round_two_notif()
+            await round_two_notif()
             time.sleep(65)
        
         await asyncio.sleep(1)
