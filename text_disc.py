@@ -14,7 +14,7 @@ round_two_times = [7, 15, 23]
 
 async def round_one_action():
     channel = client.get_channel(target_channel)
-    info = funding.round_one()
+    info = funding.round_one_info()
     await channel.send("@everyone " + "Funding paid for Okex/Binance/Bybit")
     msg = r"```"
     for index in info:
@@ -24,7 +24,7 @@ async def round_one_action():
 
 async def round_one_notif():
     channel = client.get_channel(target_channel)
-    info = funding.round_one()
+    info = funding.round_one_info_notif()
     await channel.send("@everyone " + "30 mins till Okex/Binance/Bybit")
     msg = r"```"
     for index in info:
@@ -34,7 +34,7 @@ async def round_one_notif():
      
 async def round_two_action():
     channel = client.get_channel(target_channel)
-    info = funding.round_two()
+    info = funding.round_two_info()
     await channel.send("@everyone" + "Funding paid for Bitmex/Huboi")
     msg = r"```"
     for index in info:
@@ -44,7 +44,7 @@ async def round_two_action():
 
 async def round_two_notif():
     channel = client.get_channel(target_channel)
-    info = funding.round_one()
+    info = funding.round_two_info_notif()
     await channel.send("@everyone" + "30 mins till Bitmex/Huboi")
     msg = r"```"
     for index in info:
