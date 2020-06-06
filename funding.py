@@ -44,8 +44,8 @@ def get_ratio():
 
 def round_one_info_notif():
     info = {
-        "bybit-usdt" : bybit_funding,
-        "last-binace-usdt": binance_funding,
+        "bybit-usdt" : bybit_funding(),
+        "last-binace-usdt": binance_funding(),
         "okex-usd-estimate": okex_funding()[1],
         "okex-usdt-estimate": okex_funding()[3],
         "current USD/USDT": get_ratio()
