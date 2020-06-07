@@ -65,7 +65,7 @@ def round_one_info():
         "bybit": bybit_funding(),
         "last-binance-usdt": binance_funding(),
         "okex-usd": okex_funding()[0],
-        "okex-usdt" : okex_funding()[1],
+        "okex-usdt" : okex_funding()[2],
         "current USD/USDT": get_ratio()
     }
     return info
@@ -77,5 +77,3 @@ def round_two_info():
         "current USD/USDT": get_ratio()
     }
     return info
-
-
