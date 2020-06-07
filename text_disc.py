@@ -15,38 +15,34 @@ round_two_times = [7, 15, 23]
 async def round_one_action():
     channel = client.get_channel(target_channel)
     info = funding.round_one_info()
-    await channel.send("@everyone " + "Funding paid for Okex/Binance/Bybit")
-    msg = r"```"
+    msg = "@everyone Funding paid for Okex/Binance/Bbybit\n```"
     for index in info:
         msg += index + ": " + str(info[index]) + "\n"
-    msg += r"```"
+    msg += "```"
     await channel.send(msg)
 
 async def round_one_notif():
     channel = client.get_channel(target_channel)
     info = funding.round_one_info_notif()
-    await channel.send("@everyone " + "30 mins till Okex/Binance/Bybit")
-    msg = r"```"
+    msg = "@everyone 30 mins till Okex/Binance/Bybit\n```"
     for index in info:
         msg += index + ": " + str(info[index]) + "\n"
-    msg += r"```"
+    msg += "```"
     await channel.send(msg)
      
 async def round_two_action():
     channel = client.get_channel(target_channel)
     info = funding.round_two_info()
-    await channel.send("@everyone" + "Funding paid for Bitmex/Huboi")
-    msg = r"```"
+    msg = "@everyone Funding paid for Bitmex/Huboi\n```"
     for index in info:
         msg += index + ": " + str(info[index]) + "\n"
-    msg += r"```"
+    msg += "```"
     await channel.send(msg)
 
 async def round_two_notif():
     channel = client.get_channel(target_channel)
     info = funding.round_two_info_notif()
-    await channel.send("@everyone" + "30 mins till Bitmex/Huboi")
-    msg = r"```"
+    msg = "@everyone 30 mins till Bitmex/Huboi\n```"
     for index in info:
         msg += index + ": " + str(info[index]) + "\n"
     msg += r"```"
@@ -60,25 +56,23 @@ async def on_ready():
         if now.hour in round_one_times and now.minute == 0:
             time.sleep(25)
             await round_one_action()
-            time.sleep(65)
+            time.sleep(300)
             continue
         if now.hour in round_two_times and now.minute == 0:
             time.sleep(25)
             await round_two_action()
-            time.sleep(65)
+            time.sleep(300)
             continue
 
         if now.hour+1 in round_one_times and now.minute == 30:
             await round_one_notif()
-            time.sleep(65)
+            time.sleep(300)
             continue
         if now.hour+1 in round_two_times and now.minute == 30:
             await round_two_notif()
-            time.sleep(65)
+            time.sleep(300)
             continue
        
         await asyncio.sleep(1)
 
 client.run(token)
-
-
